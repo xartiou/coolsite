@@ -16,8 +16,15 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from django.urls import include
+from women.views import *
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('women/', include('women.urls'))
+    path('', include('women.urls'))
 ]
+
+# обработчик для страницы 404 работает при DEBUG=False в SETTINGS
+handler404 = pageNotFound
+
+
+# ПЕРЕНАПРАВЛЕНИЕ - создание 301 и 302 редиректов
