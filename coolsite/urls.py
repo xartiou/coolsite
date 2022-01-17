@@ -13,9 +13,12 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path
 from django.urls import include
+
+from coolsite import settings
 from women.views import *
 
 urlpatterns = [
@@ -23,8 +26,10 @@ urlpatterns = [
     path('', include('women.urls'))
 ]
 
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
 # обработчик для страницы 404 работает при DEBUG=False в SETTINGS
 handler404 = pageNotFound
-
-
 # ПЕРЕНАПРАВЛЕНИЕ - создание 301 и 302 редиректов
+
