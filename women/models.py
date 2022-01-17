@@ -5,6 +5,7 @@ from django.db import models
 # при создании или изменении класса выполняем следующие команды:
 #   python manage.py makemigrations
 #   python manage.py migrate
+from django.urls import reverse
 
 
 class Women(models.Model):
@@ -18,6 +19,10 @@ class Women(models.Model):
 # метод вывода информации объекта
     def __str__(self):
         return self.title
+
+# метод для формирования url
+    def get_absolute_url(self):
+        return reverse ('post', kwargs={'post_id': self.pk})
 
 # from women.models import Women команда для shell
 # from django.db import connection
