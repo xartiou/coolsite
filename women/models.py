@@ -15,3 +15,10 @@ class Women(models.Model):
     time_update = models.DateTimeField(auto_now=True)
     is_published = models.BooleanField(default=True)
 
+# метод вывода информации объекта
+    def __str__(self):
+        return self.title
+
+# from women.models import Women команда для shell
+# from django.db import connection
+# https://djbook.ru/rel3.0/topics/db/
