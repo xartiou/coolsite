@@ -47,7 +47,7 @@ class Category(models.Model):
 
     # метод для формирования url
     def get_absolute_url(self):
-        return reverse('category', kwargs={'cat_id': self.pk})
+        return reverse('category', kwargs={'cat_slug': self.slug})
 
 # from women.models import Women команда для shell
 # from django.db import connection
